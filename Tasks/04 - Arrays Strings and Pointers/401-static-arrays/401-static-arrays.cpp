@@ -44,6 +44,11 @@ int main()
 
     //Write task 1 solution here
     int64_t sum = 0L;   //Result needs to be bigger than int to avoid overflow
+    for (unsigned int n = 0; n < N; n++)
+    {
+        sum = nums[n] + sum;
+    }
+    cout << "Sum = " << sum << endl;
 
 
     // ***********************************************************************************************************************
@@ -51,6 +56,8 @@ int main()
     // ***********************************************************************************************************************
 
     //Write task 2 solution here
+    float mean = (float)sum / (float)N;
+    printf("Mean =%.1f",mean);
 
 }
 
