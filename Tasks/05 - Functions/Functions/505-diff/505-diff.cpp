@@ -3,7 +3,7 @@ using namespace std;
 
 //Function prototypes
 int sub(int u, int v);
-
+int absDiff(int u, int v);
 
 int main()
 {
@@ -18,17 +18,10 @@ int main()
 
     // ***1***
     // create variables to hold the reslts of the calculation
-    int diff = 0;
+    int diff = absDiff(var1,var2);
 
     // Calculate the difference
-    if (var1 >= var2)               // check which variable is larger - also this covers the case where they are the same
-    {
-        diff = sub(var1, var2);     // do the subtraction
-    }
-    else
-    {
-        diff = sub(var2, var1);     // do the subtraction
-    }
+    
     // ***2***
     
 
@@ -44,4 +37,18 @@ int sub(int u, int v)
 {
     int y = u - v;
     return y;
+}
+
+int absDiff(int u, int v)
+{
+    int diff = 0;
+    if (u >= v)               // check which variable is larger - also this covers the case where they are the same
+    {
+        diff = sub(u, v);     // do the subtraction
+    }
+    else
+    {
+        diff = sub(v, u);     // do the subtraction
+    }
+    return diff;
 }

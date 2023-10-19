@@ -10,7 +10,7 @@ struct Point {
 
 //Function prototypes
 void displayPoint(Point p);
-float calculateLength(Point p);
+void calculateLength(Point p);
 void flipPoint(Point* p);
 Point addPoint(Point p1, Point p2);
 
@@ -25,7 +25,8 @@ int main()
     flipPoint(&p1);                 //Pass the address so p1 can be modified by the function
     displayPoint(p1);               //Showing p4
 
-    cout << endl << "Length of p1 = " << calculateLength(p1) << endl;
+    calculateLength(&p1);
+    cout << endl << "Length of p1 = " << p1.length << endl;
 
 }
 
@@ -40,11 +41,11 @@ void displayPoint(Point p)
 }
 
 // Calculate and return the distance of p from the origin (0,0)
-float calculateLength(Point p)
+void calculateLength(Point* p)
 {
-    float h = sqrt(p.x * p.x + p.y * p.y);
-    //p.length = h; //This would be pointless as p is a copy
-    return h;
+    float h = sqrt(p->x * p->x + p->y * p->y);
+    p->length = h; //This would be pointless as p is a copy
+    
 }
 
 // Swap the x and y coordinates of p inplace
@@ -67,7 +68,7 @@ Point addPoint(Point p1, Point p2)
     Point result = p1;      // Copy p1 into result
     result.x += p2.x;       // Add on the x member value of p2
     result.y += p2.y;       // Add on the y member value of p2
-    result.length = calculateLength(result);    //Update the length
+    calculateLength(&result);    //Update the length
 
     return result;
 }
