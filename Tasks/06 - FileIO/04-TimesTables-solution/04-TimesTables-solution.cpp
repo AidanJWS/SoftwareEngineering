@@ -6,13 +6,13 @@ using namespace std;
 int main()
 {
 	//Output stream object
-	ofstream op;
+	ofstream outputStream;
 
 	//Open
-	op.open("tables.txt");
+	outputStream.open("tables.txt");
 
 	//Check this succeeded (maybe the disk is full?)
-	if (op.is_open() == false) {
+	if (outputStream.is_open() == false) {
 		cerr << "Cannot create file" << endl;
 		return -1;
 	}
@@ -20,14 +20,14 @@ int main()
 	//The following code is unchanged, except we use a different stream object
 	for (unsigned int r = 2; r <= 12; r++) {
 		for (unsigned int c = 2; c <= 12; c++) {
-			op << r * c << "\t";
+			outputStream << r * c << "\t";
 		}
-		op << endl;
+		outputStream << endl;
 	}
-	op << endl;
+	outputStream << endl;
 
 	//Remember to close when done
-	op.close();
+	outputStream.close();
 
 	return 0;
 }

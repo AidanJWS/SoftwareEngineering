@@ -16,7 +16,7 @@ int main()
     // (ii) Stream characters
     outputStream << "Hello COMP1000" << endl << "--------------" << endl;
     outputStream << "Subject Area: " << "COMP" << endl;
-    outputStream << "Module ID: " << 1000 << endl;
+    outputStream << "Module ID: " << 2000 << endl;
 
     // (iii) Close
     outputStream.close();
