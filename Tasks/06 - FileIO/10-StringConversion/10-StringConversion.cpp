@@ -52,15 +52,15 @@ int main()
 
     // Done
     return 0;
-}
+//}
 
 // Create a test file with filename fn
-void createFile(string fn)
+void createFile(string fn)      // Creates a file and names is "fn"
 {
     // (i) Open for write
-    ofstream outputStream;
-    outputStream.open(fn);
-    if (!outputStream.is_open()) {
+    ofstream outputStream;          //
+    outputStream.open(fn);          //Opens the fn file ready for writing data to it
+    if (!outputStream.is_open()) {     //If the file is not open then do the followin:
         cerr << "Cannot create file" << endl;
         throw std::runtime_error("Cannot create " + fn);
     }

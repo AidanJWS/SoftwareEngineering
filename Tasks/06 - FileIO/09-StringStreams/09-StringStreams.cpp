@@ -21,31 +21,25 @@ int main()
 
     //Read first word (words are separated by spaces or newlines)
     istringstream iss(sentence);
-    iss >> nextWord;
+    int word_count = 0;     //Set the word count to 0
 
-    //Was a word actually read?
-    if (iss.fail()) {
-        //If it failed, we're probably at the end of the stream
-        cout << "No word successfully read. Is this the end of stream?" << endl;
-    }
-    else {
-        //We have a valid word - so display it
-        cout << "Read the word: " << nextWord << endl;
-
-        //We can compare C++ strings using the == operator (very convenient!)
-        if (nextWord == "May") {
-            cout << "That is what I expected" << endl;
+    while (!iss.eof()) {    //While we are not at the end of the file do the following:
+        iss >> nextWord;    //Read the next word
+        if (iss.fail()) {   //If it does not read the next word do the following:
+            continue;       //Break out the loop and continues with the next iteration
         }
-        else {
-            cout << "Something weird is happening?" << endl;
-        }
-    }
+        word_count++;   //Each time a word is read the value is increased by1.
 
-    //Final check - did we read an EOF character? This can happen when we read the last word or beyond it (space or newline)
-    if (iss.eof()) {
-        cout << "We reached the end of the file" << endl;
+
+        cout << nextWord << endl;   //Write each word if they are available
+        if (nextWord == "Always.")   //If the next word is Always then do the following:
+        {
+            cout << endl;   //Display and empty line as a line break
+        }
     }
     
+    cout << "The total number of words are" << word_count << endl;  // Displaying the total word count
+
     //Done
     return 0;
 

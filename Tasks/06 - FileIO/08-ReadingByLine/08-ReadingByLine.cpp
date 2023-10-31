@@ -49,6 +49,14 @@ int main()
     // Use a loop to read all remaining lines
     // Hint - `inputStream.eof()` to check if the end of file character was read
 
+    do {
+        getline(inputStream, nextLine);
+
+        if (!inputStream.fail()){
+
+            allLines = allLines + nextLine + "\n";
+        }
+    } while (!inputStream.eof());
 
 
 
