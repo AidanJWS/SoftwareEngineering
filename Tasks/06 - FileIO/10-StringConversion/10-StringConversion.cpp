@@ -46,13 +46,19 @@ int main()
             cout << "Found \"ID:\". The code should be next...." << endl;
             //TODO:
             // Read the next word
+            iss >> nextWord;
             // If successful, try to convert to an integer then break from the while loop
+            if (!iss.fail()) {   //If there is word next then do the following (Doesnt fail)
+                moduleNumber = stoi(nextWord);  //Change the value of nextWord to an integer from a string
+                cout << "COMP" << moduleNumber << +1 << endl;
+                break;
+            }
         }
     }
 
     // Done
     return 0;
-//}
+}
 
 // Create a test file with filename fn
 void createFile(string fn)      // Creates a file and names is "fn"
