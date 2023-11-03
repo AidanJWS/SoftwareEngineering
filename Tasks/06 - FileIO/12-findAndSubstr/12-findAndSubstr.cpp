@@ -16,7 +16,6 @@ int main()
     // String to hold file content
     string dataString;
     int errCode = readFileIntoString("myfile.txt", dataString);
-
     // If successful, display contents
     if (errCode != 0) {
         cerr << "Error: " << errCode << endl;
@@ -37,7 +36,6 @@ int main()
     cout << "Found \"ID:\" at character position " << pos << endl;
     string previous  = dataString.substr(0, pos);   //Up to the location pos-1
     string following = dataString.substr(pos);      //From pos to the end
-
     //Now read the next two words
     istringstream iss(following);   //From ID: onwards
     string strTag;
@@ -50,7 +48,6 @@ int main()
     }
     cout << "Found " << strTag << endl;
     cout << "Followed by " << strCode << endl;
-
     //Conversion
     int code;
     try {
@@ -63,6 +60,25 @@ int main()
         cout << "That broke. Time for coffee" << endl;
         return -1;
     }
+    pos = dataString.find("Area:");
+    if (pos == -1) {
+        cerr << "Identifier Area: is missing from file" << endl;
+        return -1;
+    }
+
+    //Extract
+    following = dataString.substr(pos);      //From pos to the end
+
+    //Now read the next two words
+
+    istringstream iss2(following);
+    iss2 >> strTag >> strCode;
+    if (iss2.fail()) {
+        cerr << "Could not locate subject group" << endl;
+        cout << "Time for coffee" << endl;
+        return -1;
+    }
+    cout << "Subject group is " << strCode << endl;
 
     // Done
     cout << "All is well!" << endl;
